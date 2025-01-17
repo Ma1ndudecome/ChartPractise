@@ -1,21 +1,35 @@
 const ctx = document.getElementById('myChart');
-ctx.width = 500
-ctx.heigth = 500
-new Chart(ctx, {
-    type:'bar',
-    data:{
-        labels:['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets:[{
-            label:'# of Votes',
-            data:[12,1,3,5,2,3],
-            borderWidth:1
-        }]
-    },
-    options:{
-        scale:{
-            y:{
-                beginAtZero:true
-            }
+Chart.defaults.backgroundColor = '#9BD0F5';
+Chart.defaults.borderColor = '#36A2EB';
+Chart.defaults.color = 'red';
+const data ={
+    labels:['Andrei', 'Vlad', 'Main'],
+    datasets:[{
+        label:'Progressive',
+        data:[10, 9, 12],
+        borderWidth:1
+    }]
+
+}
+const config = {
+    type: 'line',
+    data: data,
+    options: {
+      animations: {
+        tension: {
+          duration: 1000,
+          easing: 'linear',
+          from: 0,
+          to: 1,
+          loop: true
         }
+      },
+      scales: {
+        y: { 
+          min: 0,
+          max: 20
+        }
+      }
     }
-});
+  };
+new Chart(ctx, config);
